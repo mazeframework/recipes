@@ -1,6 +1,6 @@
 require "./initializers/**"
 
-require "amber"
+require "maze"
 
 require "../src/controllers/application_controller"
 require "../src/controllers/**"

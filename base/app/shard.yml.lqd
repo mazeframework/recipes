@@ -22,7 +22,8 @@ dependencies:
     #version: {{ maze_version }}
 
   citrine-i18n:
-    github: amberframework/citrine-i18n
+    path: /home/damian/workspace/mazeframework/citrine-i18n
+    #github: mazeframework/citrine-i18n
     version: 0.1.0
 
 {% if model == "crecto" %}
