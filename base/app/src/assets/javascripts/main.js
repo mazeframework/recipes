@@ -1,1 +1,1 @@
-import Amber from 'amber'
+import Maze from 'maze'

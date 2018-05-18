@@ -31,7 +31,7 @@ database_url: sqlite3:./db/{{ database_name_base }}_development.db
 {% endif %}
 
 session:
-  key: amber.session
+  key: maze.session
   store: signed_cookie
   expires: 0
 

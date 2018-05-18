@@ -1,25 +1,25 @@
-Amber::Server.configure do |app|
+Maze::Server.configure do |app|
   pipeline :web do
     # Plug is the method to use connect a pipe (middleware)
     # A plug accepts an instance of HTTP::Handler
-    plug Amber::Pipe::PoweredByAmber.new
-    # plug Amber::Pipe::ClientIp.new(["X-Forwarded-For"])
+    plug Maze::Pipe::PoweredByMaze.new
+    # plug Maze::Pipe::ClientIp.new(["X-Forwarded-For"])
     plug Citrine::I18n::Handler.new
-    plug Amber::Pipe::Error.new
-    plug Amber::Pipe::Logger.new
-    plug Amber::Pipe::Session.new
-    plug Amber::Pipe::Flash.new
-    plug Amber::Pipe::CSRF.new
+    plug Maze::Pipe::Error.new
+    plug Maze::Pipe::Logger.new
+    plug Maze::Pipe::Session.new
+    plug Maze::Pipe::Flash.new
+    plug Maze::Pipe::CSRF.new
     # Reload clients browsers (development only)
-    plug Amber::Pipe::Reload.new if Amber.env.development?
+    plug Maze::Pipe::Reload.new if Maze.env.development?
   end
 
   # All static content will run these transformations
   pipeline :static do
-    plug Amber::Pipe::PoweredByAmber.new
-    # plug Amber::Pipe::ClientIp.new(["X-Forwarded-For"])
-    plug Amber::Pipe::Error.new
-    plug Amber::Pipe::Static.new("./public")
+    plug Maze::Pipe::PoweredByMaze.new
+    # plug Maze::Pipe::ClientIp.new(["X-Forwarded-For"])
+    plug Maze::Pipe::Error.new
+    plug Maze::Pipe::Static.new("./public")
   end
 
   routes :web do
@@ -29,6 +29,6 @@ Amber::Server.configure do |app|
   routes :static do
     # Each route is defined as follow
     # verb resource : String, controller : Symbol, action : Symbol
-    get "/*", Amber::Controller::Static, :index
+    get "/*", Maze::Controller::Static, :index
   end
 end

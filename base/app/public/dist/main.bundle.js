@@ -70,9 +70,9 @@
 "use strict";
 
 
-var _amber = __webpack_require__(1);
+var _maze = __webpack_require__(1);
 
-var _amber2 = _interopRequireDefault(_amber);
+var _maze2 = _interopRequireDefault(_maze);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

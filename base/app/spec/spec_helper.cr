@@ -1,4 +1,4 @@
-ENV["AMBER_ENV"] ||= "test"
+ENV["MAZE_ENV"] ||= "test"
 
 require "spec"
 require "micrate"
@@ -6,7 +6,7 @@ require "garnet_spec"
 
 require "../config/*"
 
-Micrate::DB.connection_url = Amber.settings.database_url
+Micrate::DB.connection_url = Maze.settings.database_url
 
 # Automatically run migrations on the test database
 Micrate::Cli.run_up

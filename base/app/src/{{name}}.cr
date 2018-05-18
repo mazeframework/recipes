@@ -1,3 +1,3 @@
 require "../config/*"
 
-Amber::Server.start
+Maze::Server.start

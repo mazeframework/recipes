@@ -14,7 +14,7 @@ let config = {
   },
   resolve: {
     alias: {
-      amber: path.resolve(__dirname, '../../lib/amber/assets/js/amber.js')
+      maze: path.resolve(__dirname, '../../lib/maze/assets/js/maze.js')
     }
   },
   module: {

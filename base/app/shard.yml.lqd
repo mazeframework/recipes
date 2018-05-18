@@ -22,8 +22,7 @@ dependencies:
     #version: {{ maze_version }}
 
   citrine-i18n:
-    path: /home/damian/workspace/mazeframework/citrine-i18n
-    #github: mazeframework/citrine-i18n
+    github: mazeframework/citrine-i18n
     version: 0.1.0
 
 {% if model == "crecto" %}
@@ -43,10 +42,6 @@ dependencies:
   jasper_helpers:
     github: amberframework/jasper-helpers
     version: ~> 0.2.0
-
-  amber_render_module:
-    github: damianham/amber_render_module
-    version: ~> 0.1.0
 
 {% if database == "pg" %}
   pg:

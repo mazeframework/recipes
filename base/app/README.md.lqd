@@ -1,6 +1,6 @@
 # {{ name }}
 
-This project is powered by [Amber Framework](https://mazeframework.github.io/).
+This project is powered by [Maze Framework](https://mazeframework.github.io/).
 
 ## Installation
 
@@ -22,7 +22,7 @@ maze watch
 
 To build and run a **production** release:
 
-1. Add an environment variable `AMBER_ENV` with a value of `production`
+1. Add an environment variable `MAZE_ENV` with a value of `production`
 2. Run these commands (Note using `--release` is optional and may take a long time):
 
 ```

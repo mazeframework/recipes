@@ -1,8 +1,8 @@
 {% if model == "granite" %}
 require "granite_orm/adapter/{{ database }}"
 
-Granite::ORM.settings.database_url = Amber.settings.database_url
-Granite::ORM.settings.logger = Amber.settings.logger.dup
+Granite::ORM.settings.database_url = Maze.settings.database_url
+Granite::ORM.settings.logger = Maze.settings.logger.dup
 Granite::ORM.settings.logger.progname = "Granite"
 
 {% else %}
@@ -26,9 +26,9 @@ module Repo
     c.adapter = Crecto::Adapters::SQLite3
   {% endif %}
 
-    c.uri = Amber.settings.database_url
+    c.uri = Maze.settings.database_url
   end
 end
 
-Crecto::DbLogger.set_handler(Amber.settings.logger.dup)
+Crecto::DbLogger.set_handler(Maze.settings.logger.dup)
 {% endif %}

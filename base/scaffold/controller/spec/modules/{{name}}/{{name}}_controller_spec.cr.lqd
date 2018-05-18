@@ -23,14 +23,14 @@ def create_{{ name | underscore }}
 end
 
 class {{ class_name }}ControllerTest < GarnetSpec::Controller::Test
-  getter handler : Amber::Pipe::Pipeline
+  getter handler : Maze::Pipe::Pipeline
 
   def initialize
-    @handler = Amber::Pipe::Pipeline.new
+    @handler = Maze::Pipe::Pipeline.new
     @handler.build :web do
-      plug Amber::Pipe::Error.new
-      plug Amber::Pipe::Session.new
-      plug Amber::Pipe::Flash.new
+      plug Maze::Pipe::Error.new
+      plug Maze::Pipe::Session.new
+      plug Maze::Pipe::Flash.new
     end
     @handler.prepare_pipelines
   end
