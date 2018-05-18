@@ -7,8 +7,6 @@ require "../src/sockets/**"
 require "../src/controllers/application_controller"
 require "../src/controllers/**"
 
-# load the module renderer so we can organise our code in modules
-require "maze_render_module"
 require "../src/modules/**"
 
 # About Application.cr File
