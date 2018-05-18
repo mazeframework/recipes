@@ -1,0 +1,38 @@
+require "jwt"
+
+class HomeController < ApplicationController
+  def index
+    if current_user
+      render("app.slang", "spa.slang")
+    else
+      render("index.slang")
+    end
+  end
+
+  def me
+    if (user = current_user)
+      token = JWT.encode({id: user.id, email: user.email}, Maze.settings.secret_key_base, "HS256")
+      user_hash = {id: user.id, email: user.email}
+      {user: user_hash, token: token, csrf: csrf_token}.to_json
+    else
+      context.response.respond_with_error("Bad Request", 400)
+    end
+  end
+
+  def authenticate_jwt
+    if params["token"]
+      payload, header = JWT.decode(params["token"], Maze.settings.secret_key_base, "HS256")
+      user = User.find_by(:email, payload["email"].to_s)
+    end
+
+    if user
+      session[:user_id] = user.id
+      # create a new token for this session
+      user_hash = {id: user.id, email: user.email}
+      token = JWT.encode(user_hash, Maze.settings.secret_key_base, "HS256")
+      {user: user_hash, token: token, csrf: csrf_token}.to_json
+    else
+      context.response.respond_with_error("Bad Request", 400)
+    end
+  end
+end
