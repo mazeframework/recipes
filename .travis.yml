@@ -2,4 +2,4 @@ language: crystal
 
 cache:
   directories:
-    - amber
+    - maze
