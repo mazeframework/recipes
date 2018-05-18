@@ -23,7 +23,7 @@ dependencies:
 
   citrine-i18n:
     github: mazeframework/citrine-i18n
-    version: 0.1.0
+    version: ~> 0.1.1
 
 {% if model == "crecto" %}
   crecto:
