@@ -1,18 +1,47 @@
 'use strict';
 import React, {Component} from 'react';
 
+import ResourceStream from '../../../lib/js/resourceStream';
+
 import { {{class_name}}, {{class_name}}IndexItem} from "./{{name}}";
 
 export default class {{class_name}}Index extends Component {
 
   componentWillMount() {
-  {% for field in visible_fields %}
-  {% if field.type == "reference" %}
+  {% for field in visible_fields -%}
+  {% if field.type == "reference" -%}
     this.props.actions.load{{field.name | camelcase | pluralize}}();
-  {% endif %}
-  {% endfor %}
+  {% endif -%}
+  {% endfor -%}
     this.props.actions.load{{class_name | pluralize}}();
+
+    let vm = this;
+
+    // create a ResourceStream and subscribe to events
+    this.stream = new ResourceStream("{{name}}", "/{{name | pluralize}}");
+
+    this.stream.on('new:model', message => {
+      console.log('new {{name}}', message.data);
+      let {{name}} = JSON.parse(message.data);
+
+      this.props.actions.add{{class_name}}({{name}});
+    });
+
+    this.stream.on('update:model', message => {
+      console.log('update {{name}}', message.data);
+      let {{name}} = JSON.parse(message.data);
+
+      this.props.actions.update{{class_name}}({{name}});
+    });
+
+    this.stream.on('delete:model', message => {
+      console.log('delete {{name}}', message.data);
+      let {{name}} = JSON.parse(message.data);
+
+      this.props.actions.remove{{class_name}}({{name}});
+    });
   }
+
   show{{class_name}}(props) {
     this.props.actions.show{{class_name}}(props.{{name}});
   }
@@ -45,9 +74,9 @@ export default class {{class_name}}Index extends Component {
           <table className="table table-striped">
             <thead>
               <tr className="{{name}}-index-table-head-row index-table-head-row">
-              {% for field in visible_fields %}
+              {% for field in visible_fields -%}
                 <th className="{{name}}-index-table-head index-table-head">{{field.name | capitalize }}</th>
-              {% endfor %}
+              {% endfor -%}
                 <th className="{{name}}-index-table-head index-table-head">Actions</th>
               </tr>
             </thead>

@@ -37,6 +37,36 @@ export const show{{class_name}} = {{name}} => {
   };
 };
 
+export const add{{class_name}} = {{name}} => {
+  return dispatch => {
+    dispatch({
+      type: ACTION_TYPES.ACTION_ADD_{{name | upcase}},
+      payload: {{name}}
+    });
+    dispatch(push('/{{name | pluralize }}/'));
+  };
+};
+
+export const remove{{class_name}} = {{name}} => {
+  return dispatch => {
+    dispatch({
+      type: ACTION_TYPES.ACTION_REMOVE_{{name | upcase}},
+      payload: {{name}}
+    });
+    dispatch(push('/{{name | pluralize }}/'));
+  };
+};
+
+export const update{{class_name}} = {{name}} => {
+  return dispatch => {
+    dispatch({
+      type: ACTION_TYPES.ACTION_UPDATE_{{name | upcase}},
+      payload: {{name}}
+    });
+    dispatch(push('/{{name | pluralize }}/'));
+  };
+};
+
 export const new{{class_name}} = {{name}} => {
   return dispatch => {
     console.log('new {{name}} action', {{name}})
@@ -70,6 +100,7 @@ export const save{{class_name}} = {{name}} => {
         type: ACTION_TYPES.ACTION_SAVE_{{name | upcase}},
         payload: {{name}}
       });
+      dispatch(push('/{{name | pluralize }}/'));
     }).fail((xhr,error) => {
       console.log('save post error', xhr)
       EventBus.emit('notify:error', "Could not save {{class_name}} - " + xhr.responseJSON.errors.join(', ') );
