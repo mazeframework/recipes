@@ -70,6 +70,7 @@ export const save{{class_name}} = {{name}} => {
         type: ACTION_TYPES.ACTION_SAVE_{{name | upcase}},
         payload: {{name}}
       });
+      dispatch(push('/{{name | pluralize }}/'));
     }).fail((xhr,error) => {
       console.log('save post error', xhr)
       EventBus.emit('notify:error', "Could not save {{class_name}} - " + xhr.responseJSON.errors.join(', ') );
