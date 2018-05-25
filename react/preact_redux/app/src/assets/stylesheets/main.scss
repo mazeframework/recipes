@@ -78,10 +78,11 @@ h6, .h6 {
 
 #logo {
   background-color: $background-color;
-  background-image: url("../images/logo.png");
+  background-image: url("../images/maze.svg");
+  background-repeat: no-repeat;
   background-size:contain;
   width: 200px;
-  height:278px;
+  height:200px;
 }
 
 /* Hide logo in small screens */
